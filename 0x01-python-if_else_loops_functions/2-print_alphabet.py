@@ -1,3 +1,3 @@
 #!/usr/bin/pyhon3
-in range(97, 123):
-    print('{:c}'.format(i), end='')
+for char1 in range(97, 123):
+    print(f"{char1:c}", end="")
