@@ -1,4 +1,4 @@
 #!/usr/bin/python3
-def element_at(my_list=[]):
-    for elmnt in my_list:
-        print("{:d}".format(elmnt))
+def print_list_integer(my_list=[]):
+    for elm in my_list:
+        print("{:d}".format(elm))
