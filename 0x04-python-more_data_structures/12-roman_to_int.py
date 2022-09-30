@@ -11,8 +11,8 @@ def roman_to_int(roman_string):
                 'CD': -200,
                 'XC': -20,
                 'XL': -20,
-                'IX': -2, '
-                IV': -2
+                'IX': -2,
+                'IV': -2
                 }
         chars = ""
         for i in range(0, len(roman_string) - 1):
