@@ -12,4 +12,4 @@ def roman_to_int(roman_string):
         chars = roman_string[i] + roman_string[i + 1]
         if chars in subs:
             n += subs[chars]
-    return n
+        return n
