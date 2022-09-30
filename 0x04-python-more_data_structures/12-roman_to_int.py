@@ -6,7 +6,7 @@ def roman_to_int(roman_string):
     roman = {'M': 1000, 'D': 500, 'C': 100, 'L': 50, 'X': 10, 'V': 5, 'I': 1}
     for i in roman_string:
         n += roman.get(i, 0)
-        subs = {
+    subs = {
                 'CM': -200,
                 'CD': -200,
                 'XC': -20,
@@ -14,7 +14,7 @@ def roman_to_int(roman_string):
                 'IX': -2,
                 'IV': -2
                 }
-        chars = ""
+    chars = ""
     for i in range(0, len(roman_string) - 1):
         chars = roman_string[i] + roman_string[i + 1]
         if chars in subs:
