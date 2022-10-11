@@ -6,23 +6,22 @@ class Square:
     def __init__(self, size=0):
         """Constructor of the Square class"""
         self.size = size
-        @property
+
     def size(self):
         """The __size getter"""
-        return self.__size
+        return (self.__size)**2
 
-    @size.sette
-    def size(self, value):
+    @property
+    def size(self):
         """The __size setter"""
-        if value:
-            if isinstance(value, int) is not True:
-                raise TypeError("size must be an integer")
-            return
+        return size.__size
+
+    @size.setter
+    def size(self, value):
+        if type(value) is not int:
+            raise TypeError("size must be an integer")
+        else:
             if value < 0:
                 raise ValueError("size must be >= 0")
-            return
-        self.__size = value
-
-        def area(self):
-            """Returns the size of the square"""
-            return self.__size ** 2
+            else:
+                self.__size = value
