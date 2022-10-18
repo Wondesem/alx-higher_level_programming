@@ -5,6 +5,7 @@ Low memory cost: Defines a locked class
 Importing any module is not allowed
         """
 
+
 class LockedClass:
     """Prevent the user from instantiating new LockedClass attributes.
     prevents the user from dynamically creating new instance attributes
