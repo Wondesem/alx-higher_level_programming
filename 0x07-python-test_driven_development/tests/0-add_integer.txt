@@ -1,14 +1,8 @@
 # 0-add_integer.txt
 
-
-
 ===========================
-
 How to Use 0-add_integer.py
-
 ===========================
-
-
 
 The module defines additoin function "def add_integer(a, b=98) 
 
@@ -16,232 +10,86 @@ Usage
 
 =====
 
-
-
 add_integer(..) returns the sum of two numbers in the type of integer
-
 The operation is equivalent to the '+' operator that adds two numbers
+-------
 
+>>> add_integer = __import__('0-add_integer').add_integer
+	>>>add_nteger(5, 6)
+	11
 
-
-::
-
-
-
-    >>> add_integer = __import__('0-add_integer').add_integer
-
-    >>> add_integer(5, 6)
-
-    11
-
-
-
-::
-
-
-
-    >>> add_integer(7, --10)
-
-    -3
-
-
+	>>> add_integer(7, --10)
+	-3
 
 In the function floating-point numbers input is also possible .
 
-
-
-::
-
-
-
-    >>> add_integer(3.0, 4.0)
-
-    7
-
-
+	>>> add_integer(3.0, 4.0)
+	7
 
 The output is always integer becuase the float inputs are cast into
-
 integer before addition.
 
-::
+	>>> add_integer(4.9, 0.5)
+	4
 
-
-
-    >>> add_integer(4.9, 0.5)
-
-    4
-
-
-
-::
-
-
-
-    >>> add_integer(-5.9, -0.2)
-
-    -5
-
-
+	>>> add_integer(-5.9, -0.2)
+	-5
 
 Floating and non-floating point values can be combined.
 
-
-
-::
-
-
-
-    >>> add_integer(2.3, -3)
-
-    -1
-
-
+	>>> add_integer(2.3, -3)
+	-1
 
 The second argument is optional - by default, it is 98.
 
-
-
-::
-
-
-
-    >>> add_integer(4)
-
-    100
-
-
+	>>> add_integer(4)
+	102
 
 Non-Numbers
-
 ===========
-
-
 
 "add_integer()" expects that both arguments are either integers or floats.
 
 If either argument is a non-integer and non-float, a TypeError is raised:
 
+	>>> add_integer("abc", 3)
+	Traceback (most recent call last):
+	TypeError: a must be an integer
 
+	add_integer(2, "mkd")
+	Traceback (most recent call last):
+	TypeError: b must be an integer
 
-::
+	>>> add_integer(None)
+	Traceback (most recent call last):
+	TypeError: a must be an integer
 
+	>>> add_integer(2.3, ALX)
+	Traceback (most recent call last):
+	TypeError: b must be an integer
 
+If both arguments are non-integers and non-floats, a TypeError message is only printed for the first argument.
 
-    >>> add_integer("abc", 3)
-
-    Traceback (most recent call last):
-
-    TypeError: a must be an integer
-
-
-
-::
-
-
-
-    >>> add_integer(2, "mkd")
-
-    Traceback (most recent call last):
-
-    TypeError: b must be an integer
-
-
-
-::
-
-
-
-    >>> add_integer(None)
-
-    Traceback (most recent call last):
-
-    TypeError: a must be an integer
-
-
-
-::
-
-
-
-    >>> add_integer(2.3, ALX)
-
-    Traceback (most recent call last):
-
-    TypeError: b must be an integer
-
-
-
-If both arguments are non-integers and non-floats, a TypeError message is only
-
-printed for the first argument.
-
-
-
-::
-
-
-
-    >>> add_integer("Hi", "there")
-
-    Traceback (most recent call last):
-
-    TypeError: a must be an integer
-
-
+	>>> add_integer("Hi", "there")
+	Traceback (most recent call last):
+	TypeError: a must be an integer
 
 The function will fail if infinity is provided.
 
+	>>> add_integer(float('inf'))
+	Traceback (most recent call last):
+        OverflowError: cannot convert float infinity to integer
 
-
-::
-
-
-
-    >>> add_integer(float('inf'))
-
-    Traceback (most recent call last):
-
-    OverflowError: cannot convert float infinity to integer
-
-     
-
-
-
-::
-
-
-
-    >>> add_integer(2, float('inf'))
-
-    Traceback (most recent call last):
-
-    OverflowError: cannot convert float infinity to integer
-
-
+        >>> add_integer(2, float('inf'))
+	Traceback (most recent call last):
+	OverflowError: cannot convert float infinity to integer
 
 And again with NaN numbers.
 
+	>>> add_integer(float('nan'))
+	Traceback (most recent call last):
+	ValueError: cannot convert float NaN to integer
 
-
-::
-
-
-
-    >>> add_integer(float('nan'))
-
-    Traceback (most recent call last):
-
-    ValueError: cannot convert float NaN to integer
-
-
-
-::
-
-
-
-    >>> add_integer(2, float('nan'))
-
-    Traceback (most recent call last):
-
-    ValueError: cannot convert float NaN to integer
+	>>> add_integer(2, float('nan'))
+	Traceback (most recent call last):
+	ValueError: cannot convert float NaN to integer
