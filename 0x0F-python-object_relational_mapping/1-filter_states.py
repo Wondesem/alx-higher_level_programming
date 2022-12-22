@@ -15,5 +15,5 @@ if __name__ == "__main__":
     query_rows = cur.fetchall()
     for row in query_rows:
         print(row)
-    ur.close()
+    cur.close()
     conn.close()
