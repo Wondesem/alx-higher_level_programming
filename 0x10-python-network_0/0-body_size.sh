@@ -1,4 +1,3 @@
 #!/bin/bash
-# Sends sends a request to that URL by taking
-# URL as input and displays the size of the body of the response
-curl -s I "$1" | grep Content-Length: | cut -d ' ' -f 2
+# Get The body  size  from outgoing  request to url introduced as argument
+curl -sI "$1" | grep 'Content-Length:' | cut -c 17-
