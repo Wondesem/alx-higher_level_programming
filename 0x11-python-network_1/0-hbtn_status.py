@@ -1,9 +1,10 @@
 #!/usr/bin/python3
-"""What's my status?"""
-import urllib.request
-
-with uri.urlopen('https://intranet.hbtn.io/status') as res:
-    res = res.read()
-
-print('Body response:\n\t- type: {}\n\t- content: {}'.format(type(res), res))
-print('\t- utf8 content: {}'.format(str(res, 'utf-8')))
+''' fetches https://intranet.hbtn.io/status '''
+import urllib.request as req
+if __name__ == "__main__":
+    with req.urlopen('https://intranet.hbtn.io/status') as res:
+        html = res.read()
+        print('Body response:')
+        print('\t- type: {}'.format(type(html)))
+        print('\t- content: {}'.format(html))
+        print('\t- utf8 content: {}'.format(html.decode('utf-8')))
