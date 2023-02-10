@@ -1,30 +1,28 @@
 #!/usr/bin/node
-'use strict';
-const requestMod = require('request');
-const requestUrl = 'http://swapi.co/api/films/';
-let id = parseInt(process.argv[2], 10);
-let characters = [];
-requestMod(requestUrl, function (err, response, body) {
-  if (err == null) {
-    const resp = JSON.parse(body);
-    const results = resp.results;
-    if (id < 4) {
-      id += 3;
-    } else {
-        id -= 3;
-    }
-      for (let i = 0; i < results.length; i++) {
-      if (results[i].episode_id === id) {
-        characters = results[i].characters;
-        break;
-      }
-    }
-    for (let j = 0; j < characters.length; j++) {
-      requestMod(characters[j], function (err, response, body) {
-        if (err == null) {
-          console.log(JSON.parse(body).name);
+const request = require('request');
+const episodeNumber = process.argv[2];
+const url = 'http://swapi.co/api/films/' + episodeNumber;
+request(url, function (err, response, body) {
+  if (err) {
+    console.log(err);
+  } else if (response.statusCode === 200) {
+    const charDict = {};
+    const allChars = JSON.parse(body).characters;
+    for (const c in allChars) {
+      request(allChars[c], function (err, response, body) {
+        if (err) {
+          console.log(err);
+        } else {
+          charDict[c] = JSON.parse(body).name;
+        }
+        if (allChars.length === Object.keys(charDict).length) {
+          for (const key in charDict) {
+            console.log(charDict[key]);
+          }
         }
       });
     }
+  } else {
+    console.log('Wrong status code');
   }
 });
